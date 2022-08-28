@@ -70,7 +70,15 @@ def pregunta_03():
     ]
 
     """
-    return
+
+    import itertools
+
+    datos_suma=[]
+    
+    for i, j in itertools.groupby(sorted(datos), lambda x : x[0]):
+        datos_suma.append((i, sum(int(x[1]) for x in j)))
+
+    return datos_suma
 
 
 def pregunta_04():
