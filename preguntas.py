@@ -21,7 +21,17 @@ def pregunta_01():
     214
 
     """
-    return 666
+    with open ("data.csv", "r") as file:
+        datos = file.readlines()
+
+    datos = [line.replace('\t','|').replace('\n','') for line in datos]
+    datos = [line.split('|') for line in datos]
+    
+    suma = 0
+    for lista in datos:
+        suma += int(lista[1])
+    
+    return suma
 
 
 def pregunta_02():
