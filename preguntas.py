@@ -11,7 +11,10 @@ Utilice el archivo `data.csv` para resolver las preguntas.
 
 
 """
-
+with open ("data.csv", "r") as file:
+        datos = file.readlines()
+datos = [line.replace('\t','|').replace('\n','') for line in datos]
+datos = [line.split('|') for line in datos]
 
 def pregunta_01():
     """
@@ -21,11 +24,6 @@ def pregunta_01():
     214
 
     """
-    with open ("data.csv", "r") as file:
-        datos = file.readlines()
-
-    datos = [line.replace('\t','|').replace('\n','') for line in datos]
-    datos = [line.split('|') for line in datos]
     
     suma = 0
     for lista in datos:
@@ -49,7 +47,12 @@ def pregunta_02():
     ]
 
     """
-    return
+    from collections import Counter
+    col1 = []
+    [col1.append(item[0]) for item in datos]
+    tuples_list = sorted(list(Counter(col1).items()))
+    
+    return tuples_list
 
 
 def pregunta_03():
