@@ -11,6 +11,10 @@ Utilice el archivo `data.csv` para resolver las preguntas.
 
 
 """
+import itertools
+from collections import Counter
+from datetime import datetime
+
 with open ("data.csv", "r") as file:
         datos = file.readlines()
 datos = [line.replace('\t','|').replace('\n','') for line in datos]
@@ -47,7 +51,6 @@ def pregunta_02():
     ]
 
     """
-    from collections import Counter
     col1 = []
     [col1.append(item[0]) for item in datos]
     tuples_list = sorted(list(Counter(col1).items()))
@@ -70,8 +73,6 @@ def pregunta_03():
     ]
 
     """
-
-    import itertools
 
     datos_suma=[]
     
@@ -103,7 +104,15 @@ def pregunta_04():
     ]
 
     """
-    return
+
+    data_by_month = Counter()
+
+    for row in datos:
+
+        date = datetime.strptime(row[2][:7], "%Y-%m")
+        data_by_month['{:02d}'.format(date.month)] += 1
+
+    return sorted(list(data_by_month.items()))
 
 
 def pregunta_05():
