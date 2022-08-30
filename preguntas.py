@@ -162,7 +162,21 @@ def pregunta_06():
     ]
 
     """
-    return
+
+    nueva_lista_valores = []
+    datos_dic = []
+    valores = [x[4] for x in datos]
+    lista_valores = [x.split(",") for x in valores]
+
+    for x in lista_valores:
+        for y in x:
+            nueva_lista_valores.append(y.split(":"))
+
+    for i, j in itertools.groupby(sorted(nueva_lista_valores), lambda x : x[0]):
+            valores_list = [int(x[1]) for x in j]
+            datos_dic.append((i, min(valores_list), max(valores_list)))
+
+    return datos_dic
 
 
 def pregunta_07():
