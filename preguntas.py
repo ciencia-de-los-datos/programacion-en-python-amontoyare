@@ -130,7 +130,14 @@ def pregunta_05():
     ]
 
     """
-    return
+
+    datos_suma = []
+
+    for i, j in itertools.groupby(sorted(datos), lambda x : x[0]):
+        valores_list = [x[1] for x in j]
+        datos_suma.append((i, int(max(valores_list)), int(min(valores_list))))
+
+    return datos_suma
 
 
 def pregunta_06():
