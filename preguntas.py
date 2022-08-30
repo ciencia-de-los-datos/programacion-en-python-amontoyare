@@ -200,7 +200,13 @@ def pregunta_07():
     ]
 
     """
-    return
+    columnas = [x[:2] for x in datos]
+    new_group = []
+
+    for i, j in itertools.groupby(sorted(columnas, key = lambda x: x[1]), lambda x: x[1]):
+        new_group.append((int(i), [x[0] for x in j]))
+
+    return new_group
 
 
 def pregunta_08():
