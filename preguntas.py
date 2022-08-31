@@ -357,4 +357,22 @@ def pregunta_12():
     }
 
     """
-    return
+
+    col0 = [itemgetter(0)(i) for i in datos]
+    col4 = [i[4].split(",") for i in datos]
+
+    valores = []
+    a = 0
+    for x in col4:
+        for y in x:
+            a += (int(y[y.index(":")+1:]))
+        valores.append(a)
+        a = 0
+
+    new_ = zip(col0,valores)
+    new_group = []
+
+    for i, j in itertools.groupby(sorted(list(new_), key = lambda x: x[0]), lambda x: x[0]):
+        new_group.append((i, sum(y[1] for y in j)))
+
+    return dict(new_group)
