@@ -261,7 +261,19 @@ def pregunta_09():
     }
 
     """
-    return
+    nueva_lista_valores = []
+    valores = [x[4] for x in datos]
+    lista_valores = [x.split(",") for x in valores]
+    contador = Counter()
+
+    for x in lista_valores:
+        for y in x:
+            nueva_lista_valores.append(y.split(":"))
+
+    for dicc in nueva_lista_valores:
+        contador[dicc[0]] += 1
+
+    return dict(sorted(contador.items()))
 
 
 def pregunta_10():
